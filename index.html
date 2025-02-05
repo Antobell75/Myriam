@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="./style.css" rel="stylesheet">
+	<title>Pour Myriam</title>
+</head>
+<body class= "bg-radial from-fuchsia-400 via-lavender-300 to-indigo-400">
+	<div class="flex flex-col justify-center items-center min-h-screen">
+		<!--Texte Principale-->
+		<div id="Texte_P" class="text-center">
+			<p class="text-center text-5xl font-bold text-gray-900">Coucou mon coeur !!!</p>
+		</div>
+		<!--Bouton Suivant-->
+		<div id="Bouton_Suivant" class="self-end pr-175 p-10">
+			<button onclick="changerBouton()" class="bg-green-400 text-green-700 px-5 py-3 tracking-widest hover:bg-green-500 rounded-3xl">Suivant</button>
+		</div>
+		<div>
+			<div class="self-end space-x-80 p-20 flex">
+			<!--Bouton Non-->
+				<button onclick="changerTexteNon()" id="Bouton_Non" class="bg-red-800 text-red-500 px-5 py-3 tracking-widest hover:bg-red-900 rounded-3xl hidden">
+					Non</button>
+			<!--Bouton Oui-->
+				<button onclick="changerTexteOui()" id="Bouton_Oui" class="bg-green-400 text-green-700 px-5 py-3 tracking-widest hover:bg-green-500 rounded-3xl hidden">
+					Oui</button>
+			</div>
+		</div>
+		<textarea id="zone_texte" class="w-100 h-15 border-2 border-gray-800 bg-gray-100 text-gray-900 resize-none hidden"></textarea>
+	</div>
+	<div id="happy" class="hidden items-center justify-center h-screen relative">
+		<img src="https://media.tenor.com/ZPHHiCRxrlsAAAAj/happy-happy-happy-cat.gif" class="w-full h-full">
+		<img src="https://i.gifer.com/WOzz.gif" class="w-full h-full">
+		<p class="absolute text-white text-4xl font-bold h-30">YESSSSSSSSS CA MERE LA PUTE LETS GOOOOOOOOOOOOOOO !!!!!!!</p>
+		<p class="absolute text-white text-4xl font-bold">Je t'aime FORTTTTTTTT</p>
+	</div>
+	<script>
+		let i = 0;
+		let t = 0;
+		let a = 0;
+	
+		const oui = [
+		"J'espère que tu vas bien ?",
+		"Alors, je peux te poser une question?",
+		"T'es sûre que tu veux savoir?",
+		];
+		const pourquoi = [
+			"Bah pourquoi?",
+			"T'es Fachée?",
+			"En vrai j'men fou un peu hein..."
+		];
+		const final = [
+		"Sache deja",
+		"Sache deja, que je t'aime",
+		"Sache deja, que je t'aime tres",
+		"Sache deja, que je t'aime tres tres",
+		"Sache deja, que je t'aime tres tres tres",
+		"Sache deja, que je t'aime tres tres tres fort",
+		"Que je veux faire ma vie avec toi",
+		"Donc ma question est...",
+		"V",
+		"Ve",
+		"Veu",
+		"Veux",
+		"Veux-",
+		"Veux-t",
+		"Veux-tu",
+		"Veux-tu ",
+		"Veux-tu ê",
+		"Veux-tu êt",
+		"Veux-tu êtr",
+		"Veux-tu être",
+		"Veux-tu être ",
+		"Veux-tu être m",
+		"Veux-tu être ma",
+		"Veux-tu être ma ",
+		"Veux-tu être ma v",
+		"Veux-tu être ma va",
+		"Veux-tu être ma val",
+		"Veux-tu être ma vali",
+		"Veux-tu être ma valen",
+		"Veux-tu être ma valent",
+		"Veux-tu être ma valenti",
+		"Veux-tu être ma valentin",
+		"Veux-tu être ma valentine",
+		"Veux-tu être ma valentine ",
+		"Veux-tu être ma valentine ?",
+		"Veux-tu être ma valentine ?<",
+		"Veux-tu être ma valentine ?<3"
+		];
+	function changerBouton() {
+		if (t == 0 && i == 0)
+		{
+			document.getElementById("Bouton_Oui").classList.remove("hidden");
+			document.getElementById("Bouton_Non").classList.remove("hidden");
+			document.getElementById("Bouton_Suivant").classList.add("hidden");
+			changerTexteOui();
+		}
+		else if (t == 0)
+		{
+			document.getElementById("Bouton_Oui").classList.remove("hidden");
+			document.getElementById("Bouton_Non").classList.remove("hidden");
+			document.getElementById("Bouton_Suivant").classList.add("hidden");
+		}
+		else if (t == 1)
+		{
+			document.getElementById("Bouton_Oui").classList.add("hidden");
+			document.getElementById("Bouton_Non").classList.add("hidden");
+			document.getElementById("Bouton_Suivant").classList.remove("hidden");
+		}
+		else if (t == 2)
+		{
+			document.getElementById("Texte_P").querySelector("p").textContent = pourquoi[2];
+			document.getElementById("zone_texte").classList.add("hidden");
+			t++;
+		}
+		else if (t == 3)
+		{
+			i = 1;
+			t = 0;
+			changerTexteOui();
+			changerBouton();
+		}
+		else if (t == 4)
+		{
+			t = 1;
+			changerBouton();
+			t = 4;
+			if (a < final.length)
+				document.getElementById("Texte_P").querySelector("p").textContent = final[a++];
+			else
+			{
+				t = 0;
+				changerBouton();
+				i = 6;
+			}
+		}
+	}
+	function finalcat(){
+	document.getElementById("Texte_P").classList.add("hidden");
+	document.getElementById("Bouton_Oui").classList.add("hidden");
+	document.getElementById("Bouton_Non").classList.add("hidden");
+	document.getElementById("happy").classList.remove("hidden");
+	document.getElementById("happy").classList.add("flex");
+	document.querySelector(".min-h-screen").classList.add("hidden");
+}
+	function changerTexteOui(){
+		if (i == 0){// Ca va?
+			document.getElementById("Texte_P").querySelector("p").textContent = oui[0];
+			i++;
+		}
+		else if (i == 1){// Je peux te poser une question?
+			document.getElementById("Texte_P").querySelector("p").textContent = oui[1];
+			i++;
+		}
+		else if (i == 2){// Tes sur?
+			document.getElementById("Texte_P").querySelector("p").textContent = oui[2];
+			i++;
+		}
+		else if (i == 3){// Demande valentine
+			t = 4;
+			changerBouton();
+		}
+		else if (i == 4){// Elle est fachee Oui
+			i = 1;
+			changerTexteNon();
+		}
+		else if (i == 6){
+			finalcat();
+		}
+	}
+	function changerTexteNon(){
+		if (i == 1){// Pourquoi?
+			document.getElementById("Texte_P").querySelector("p").textContent = pourquoi[0];
+			document.getElementById("zone_texte").classList.remove("hidden");
+			t = 1;
+			changerBouton();
+			t = 2;
+		}
+		else if (i == 2){// Transforme Elle est fachee
+			document.getElementById("Texte_P").querySelector("p").textContent = pourquoi[1];
+			i = 4;
+		}
+		else if (i == 3){// Tes sur? Non
+			i = 2;
+			changerTexteNon();
+		}
+		else if (i == 4){// Elle est fachee Non
+			i = 1;
+			changerTexteOui();
+		}
+	}
+	</script>
+</body>
+</html>
